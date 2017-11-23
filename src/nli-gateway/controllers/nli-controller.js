@@ -38,7 +38,6 @@ module.exports = {
 
             let count = 0;
             results.forEach(function (result, i) {
-                console.log(result.title);
                 wordpos.getNouns(result.title, function(data) {
                     results[i].keywords = data;
 
