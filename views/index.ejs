@@ -2,32 +2,31 @@
 <html>
 	<body>
 		<div ng-app="nliClient" ng-controller="myCtrl">
-		  שם האירוע:<br>
-		  <span ng-bind="date"></span>
-		  <br>
-		  תאריך מבוקש:<br>
-		  <input id="datePicker" type="date" name="datepicker" ng-model="date">
-		  <br><br>
-		  <input type="submit" value="Today">
-		  <button type="submit" ng-click="submit()">Submit</button>
-		  
-		<div ng-repeat="x in urls">
-			{{x.year}}<br>
-			{{x.title}}<br>
-			{{x.photographer}}<br>
-			{{x.archive}}<br>
-			<img ng-src={{x.img_url}}>
-			<br><br>
-		
+			  שם האירוע:<br>
+			  <span ng-bind="date"></span>
+			  <br>
+			  תאריך מבוקש:<br>
+			  <input id="datePicker" type="date" name="datepicker" ng-model="date">
+			  <br><br>
+			  <input type="submit" value="Today">
+			  <button type="submit" ng-click="submit()">Submit</button>
+
+			<div ng-repeat="x in urls">
+				{{x.year}}<br>
+				{{x.title}}<br>
+				{{x.photographer}}<br>
+				{{x.archive}}<br>
+				<img ng-src={{x.img_url}}>
+				<br><br>
+
+			</div>
 		</div>
-		</div>
-		
-		
+
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/he.js"></script>
-		<script type="text/javascript" src="my-controller.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="/javascripts/my-controller.js"></script>
+		<script type="text/javascript" src="/javascripts/app.js"></script>
 	</body>
 </html>
