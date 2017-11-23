@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+	<body>
+
+		<div>
+		  שם האירוע:<br>
+		  <input id="date" type="text" name="firstname" value="יום השואה" >
+		  <br>
+		  תאריך מבוקש:<br>
+		  <input id="datePicker" type="date" name="datepicker" onChange="dateToInput()">
+		  <br><br>
+		  <input type="submit" value="Today">
+		  <button type="submit" onclick="submit()">Submit</button>
+		</div>
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/locale/he.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+
+	</body>
 </html>
