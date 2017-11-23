@@ -1,6 +1,7 @@
 'use strict';
 
-const nli = require('../lib/nli-lib');
+const config = require('../../../config/config'),
+      nli = require('../lib/nli-lib');
 
 module.exports = {
 
@@ -13,9 +14,9 @@ module.exports = {
       return res.json(results);
     }
 
-    // Fetch data from all collections.
-    Object.values(nli.fetchers)
-          .forEach((fetcher) => promises.push(fetcher(date)));
+    // Fetch data from supported collections.
+    Object.values(config.supportedCollections)
+          .forEach((collection) => promises.push(nli.getFromCollection(collection)(date)));
 
     Promise.all(promises)
            .then(returnResults)

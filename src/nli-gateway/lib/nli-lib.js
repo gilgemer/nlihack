@@ -2,25 +2,33 @@
 
 const request = require('request-promise-native');
 
-// Fetches images from the Dan Hadani collection.
-function getDanHadani(date) {
+const config = require('../../../config/config'),
+      supportedCollections = Object.values(config.supportedCollections);
 
-  // Constructs the query URL according to the given date.
-  function consturctURL(date) {
+// Constructs the query URL according to the given date.
+const urlAdapters = {
+  'dan-hadani': function(date) {
     return 'http://primo.nli.org.il/PrimoWebServices/xservice/search/brief?institution=NNL&loc=local,scope:(NNL)&query=lsr08,exact,%D7%94%D7%A1%D7%A4%D7%A8%D7%99%D7%99%D7%94+%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA+%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F+%D7%93%D7%9F+%D7%94%D7%93%D7%A0%D7%99&query=lsr08,exact,13+%D7%91%D7%99%D7%95%D7%A0%D7%99+1969&indx=1&bulkSize=50&json=true';
   }
-
-  let url = consturctURL(date);
-  return request(url).then((res) => JSON.parse(res));
-}
-
-
-module.exports = {
-
-  fetchers: {
-    'dan-hadani': getDanHadani
-  },
-
-  getDanHadani
 };
 
+// Fetches images from the collection.
+function getFromCollection(collection) {
+
+  if (!supportedCollections.includes(collection)) {
+    throw Error('Collection not supported!');
+  }
+
+  let urlAdapter = urlAdapters[collection];
+
+  function fetch(date) {
+    let url = urlAdapter(date);
+    return request(url).then((res) => JSON.parse(res));
+  }
+
+  return fetch;
+}
+
+module.exports = {
+  getFromCollection
+};
