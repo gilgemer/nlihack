@@ -1,6 +1,6 @@
 'use strict';
 
-const nli = require('../nli-lib');
+const nli = require('../lib/nli-lib');
 
 module.exports = {
 
@@ -13,10 +13,9 @@ module.exports = {
       return res.json(results);
     }
 
+    // Fetch data from all collections.
     Object.values(nli.fetchers)
-          .forEach(function (fetcher) {
-            promises.push(fetcher(date))
-          });
+          .forEach((fetcher) => promises.push(fetcher(date)));
 
     Promise.all(promises)
            .then(returnResults)
