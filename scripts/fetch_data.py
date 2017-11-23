@@ -6,14 +6,15 @@ import shutil
 import sys
 
 class Record(object):
-	def __init__(self,title, photographer, archive, image_url):
+	def __init__(self,title, photographer, archive, image_url, year):
 		self._title = title
 		self._photographer = photographer
 		self._archive = archive
 		self._image_url = image_url
+		self._year = year
 
 	def __str__(self):
-		return "Title: {0},\nPhotographer: {1},\nArchive: {2},\nImage: {3}\n".format(self._title, self._photographer, self._archive, self._image_url)
+		return "title: {0},\nphotographer: {1},\narchive: {2},\nimg_url: {3},\nyear: {4}\n".format(self._title, self._photographer, self._archive, self._image_url, self._year)
 
 record_collection = []
 
@@ -95,7 +96,7 @@ for obj in data['SEGMENTS']['JAGROOT']['RESULT']['DOCSET']['DOC']:
 	# 		shutil.copyfileobj(r.raw, f)   
 
 	# Creating record object:
-	record_collection.append(Record(title, photographer, "Dan Hadani Archive", image_request_url))
+	record_collection.append(Record(title, photographer, "Dan Hadani Archive", image_request_url, str(year)))
 	count += 1
 
 for record in set(record_collection):

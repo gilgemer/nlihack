@@ -7,7 +7,11 @@ module.exports = {
 
   get: function (req, res, next) {
 
-    let date = req.body.date;
+    let date = {
+      day: req.query.day,
+      month: req.query.month
+    };
+
     let promises = [];
 
     function returnResults(results) {
