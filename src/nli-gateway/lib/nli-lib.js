@@ -86,9 +86,9 @@ const collectionAdapters = {
                             }
                             img_url = IMAGE_QUERY.replace('{image_id}', image_id);
 
-                            retObj.title = title;
+                            retObj.title = title[0];
                             retObj.img_url = img_url;
-                            retObj.photographer = photographer;
+                            retObj.photographer = photographer[0];
                             retObj.archive = archive;
                             retObj.year = year;
                             ret.push(retObj);
